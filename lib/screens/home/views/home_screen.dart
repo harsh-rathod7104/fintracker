@@ -1,4 +1,6 @@
+import 'package:fintracker/screens/add_expense/views/add_expense_screen.dart';
 import 'package:fintracker/theme/colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -88,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "\$ 1",
+                                      "₹ 1,00,000",
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineMedium
@@ -292,6 +294,18 @@ class _HomeScreenState extends State<HomeScreen> {
                           const TextStyle(fontWeight: FontWeight.w500),
                         ),
                   ),
+                  subtitle: Text(
+                    "25 Feb 2025, 11:38",
+                    style: Theme.of(context).textTheme.bodySmall?.apply(
+                        color: Colors.grey, overflow: TextOverflow.ellipsis),
+                  ),
+                  trailing: Text(
+                    "-₹500",
+                    style: Theme.of(context).textTheme.bodyMedium?.apply(
+                          color: ThemeColors.error,
+                          fontFamily: GoogleFonts.manrope().fontFamily,
+                        ),
+                  ),
                 );
               },
               separatorBuilder: (context, index) {
@@ -308,7 +322,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+              CupertinoPageRoute(builder: (context) => AddExpenseScreen()));
+        },
         child: Icon(Icons.add),
       ),
     );
